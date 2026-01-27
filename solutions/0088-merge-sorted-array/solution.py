@@ -4,23 +4,33 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
 
-        # m is a pointer at latest real num 1 
-        # n is a pointer at latest num 2 
+        # nums1 = [1,1,2,3,0,0,0], m = 4, nums2 = [2,5,6], n = 3
+        # nums1[0] = 1 and nums2[0] = 2 should I add it? no, because nums1[1] = 1, move nums1 pointer 
+        # nums1[1] = 1 and nums2[0] = 2 should I add it? yes, because nums1[2] = 2, add and move nums1 and nums2 pointer 
+        # but I cannot add elements without moving the whole array
+        # BUT I know that at the end I have the free space, so let's do it in the reverse order 
+        # we need 3 pointers, one on real end of nums1, end of nums2 and end of nums1 
+        # nums1[3] = 3 and nums2[2] = 6, I can replace nums1[6] with greater value 
 
-        # m_ insert pointer
-        m_ = m + n 
 
-        while m > 0 and n > 0: 
-            if nums1[m - 1] < nums2[n - 1]: 
-                nums1[m_ - 1] = nums2[n - 1]
-                n -= 1 
-            else: 
-                nums1[m_ - 1] = nums1[m - 1]
-                m -= 1
-            m_ -= 1
+        ptr1 = m - 1 
+        ptr2 = n - 1
+        last = len(nums1) - 1 
 
-        while n > 0:
-            nums1[m_ -1] = nums2[n - 1]
-            n -= 1
-            m_ -= 1
-
+        while ptr1 >= 0 and ptr2 >= 0: 
+            print(f"ptr1={ptr1}:{nums1[ptr1]}, ptr2={ptr2}:{nums2[ptr2]}, nums={nums1}")
+            if nums2[ptr2] > nums1[ptr1]: 
+                nums1[last] = nums2[ptr2]
+                ptr2 -= 1 
+            else:
+                nums1[last] = nums1[ptr1]
+                ptr1 -= 1 
+            last -= 1
+        
+        print(f"ptr1={ptr1}, ptr2={ptr2}, nums={nums1}")
+            
+        while ptr2 >= 0: 
+            nums1[last] = nums2[ptr2]
+            ptr2 -= 1
+            last -= 1
+        
