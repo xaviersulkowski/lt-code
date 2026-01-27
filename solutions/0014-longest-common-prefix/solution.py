@@ -1,19 +1,11 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        if not strs: 
-            return ""
-        
-        shortest = strs[0]
-        
-        prefix = ""
-        
-        for s in shortest:
-            
-            prefix_candidate = prefix + s
-            
-            if not all([s.startswith(prefix_candidate) for s in strs]):
-                break 
-            else: 
-                prefix = prefix_candidate 
-        
-        return prefix
+        result = ""
+        shortest = min([len(x) for x in strs])
+        for i in range(shortest):
+            if len(set([s[i] for s in strs])) == 1:
+                result += strs[0][i]
+            else:
+                break
+
+        return result
