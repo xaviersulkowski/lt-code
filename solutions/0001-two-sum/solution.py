@@ -1,7 +1,10 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i1, n1 in enumerate(nums):
-            for i2, n2 in enumerate(nums[i1+1::]):
-                if n1 + n2 == target: 
-                    return [i1, i1 + i2 + 1]
-                    
+        lookup = {}
+        for i in range(len(nums)): 
+            diff = target - nums[i]
+            if lookup.get(diff) is not None: 
+                return [i, lookup.get(diff)]
+            else: 
+                lookup[nums[i]] = i
+        
