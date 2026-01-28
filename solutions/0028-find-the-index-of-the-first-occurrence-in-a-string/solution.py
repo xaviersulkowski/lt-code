@@ -1,17 +1,10 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        # import re 
+        if (len(needle) > len(haystack)) or needle == "":
+            return -1
 
-        # out = re.search(f"{needle}", haystack)
-        # if not out: 
-        #     return -1 
-        # else: 
-        #     return out.start()
-
-        needle_len = len(needle)
-
-        for i in range(len(haystack) - needle_len + 1):
-            if haystack[i : i + needle_len] == needle: 
+        for i in range(0, len(haystack) + 1 - len(needle)):
+            if haystack[i] == needle[0] and needle == haystack[i:i+len(needle)]:
                 return i
-        return -1 
 
+        return -1
