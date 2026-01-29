@@ -1,9 +1,8 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-
-        romanMap = {
+        roman_integer = {
             "I": 1,
-            "V": 5, 
+            "V": 5,
             "X": 10,
             "L": 50,
             "C": 100,
@@ -11,26 +10,16 @@ class Solution:
             "M": 1000
         }
 
-        finalInt = 0
+        res = 0
+        i = 0
+        while i < len(s) - 1:
+            if roman_integer[s[i]] < roman_integer[s[i + 1]]:
+                res -= roman_integer[s[i]]
+            else:
+                res += roman_integer[s[i]]
+            i += 1
 
-        latestInt = None
+        res += roman_integer[s[-1]]
 
-        for r in reversed(s): 
-            i = romanMap[r]
-            
-            if latestInt is None:
-                latestInt = i 
-            
-            if i < latestInt: 
-                finalInt -= i 
-            else: 
-                finalInt += i 
-            
-            latestInt = i
-    
-        return finalInt
+        return res
 
-            
-
-
-        
