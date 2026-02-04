@@ -11,14 +11,12 @@ class Solution:
         }
 
         res = 0
-        i = 0
-        while i < len(s) - 1:
+        for i in range(len(s) - 1): 
             if roman_integer[s[i]] < roman_integer[s[i + 1]]:
                 res -= roman_integer[s[i]]
-            else:
+            else: 
                 res += roman_integer[s[i]]
-            i += 1
-
+        
         res += roman_integer[s[-1]]
 
         return res
