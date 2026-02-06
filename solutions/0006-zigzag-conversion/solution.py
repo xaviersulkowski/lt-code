@@ -3,33 +3,30 @@ class Solution:
         if numRows == 1: 
             return s 
         
-        # Approach 1: step 
+        # approach 1: 
+
         # res = ""
         # step = 2 * (numRows - 1)
-        
-        # for r in range(numRows): 
-        #     for i in range(r, len(s), step):
-        #         res += s[i]
-        #         if r > 0 and r < numRows -1 and (i + step - 2 * r ) < len(s): 
-        #             res += s[i + step - 2 * r ]
-        
+        # for i in range(numRows): 
+        #     for j in range(i, len(s), step):
+        #         res += s[j] 
+        #         if i > 0 and i < numRows - 1 and (j + step - 2 * i) < len(s):
+        #             res += s[j + step - 2 * i] 
+
         # return res
 
-        # Approach 2: fill in rows 
-        res = [""] * numRows
-        going_down = True
-        row = 0
+        # approach 2: 
+
+        res = [""] * numRows 
+        row = 0 
+        go_down = False
         for ch in s: 
-            res[row] += ch
+            res[row] += ch 
             
-            if row == 0: 
-                going_down = True 
-            elif row == numRows - 1: 
-                going_down = False 
+            if row == 0 or row == numRows - 1: 
+                go_down = not go_down
             
-            if going_down: 
-                row += 1 
-            else: 
-                row -= 1
+            row = row + 1 if go_down else row - 1
         
         return "".join(res)
+
