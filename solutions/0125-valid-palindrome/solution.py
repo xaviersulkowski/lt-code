@@ -1,19 +1,16 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l, r = 0, len(s) - 1
+        while l < r: 
+            while l < r and not s[l].isalnum():
+                l += 1 
+            while r > l and not s[r].isalnum():
+                r -= 1 
 
-        s_normalized = "".join([s for s in s.lower() if s.isalnum()])
-        
+            if s[l].lower() != s[r].lower(): 
+                return False 
+            
+            l, r = l + 1, r - 1 
 
-        if len(s_normalized) <= 1: 
-            return True 
-        
-        for i in range(0, len(s_normalized)//2): 
-            if s_normalized[i] != s_normalized[-1 - i]:
-                return False
-        
         return True 
-        
+
