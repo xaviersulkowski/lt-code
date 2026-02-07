@@ -6,26 +6,23 @@ class Solution:
         if len(nums) < 2:
             return nums
 
-        k = k % len(nums) # 2 / 5 = 3 -> need to move 3 elements
+        k = k % len(nums)
+        
         l, r = 0, len(nums) - 1
-        while l < r:
+        while l < r: 
             nums[l], nums[r] = nums[r], nums[l]
-            l += 1
+            l += 1 
             r -= 1
 
         l, r = 0, k - 1
-        while l < r:
+        while l < r: 
             nums[l], nums[r] = nums[r], nums[l]
-            l += 1
+            l += 1 
             r -= 1
 
         l, r = k, len(nums) - 1
-        while l < r:
+        while l < r: 
             nums[l], nums[r] = nums[r], nums[l]
-            l += 1
+            l += 1 
             r -= 1
-
-        
-
  
-        
