@@ -1,7 +1,7 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         res, total = float("inf"), 0 
-        l = 0 
+        l = 0
         for r in range(len(nums)): 
             total += nums[r]
             while total >= target: 
@@ -10,3 +10,4 @@ class Solution:
                 l += 1 
 
         return 0 if res == float("inf") else res 
+
