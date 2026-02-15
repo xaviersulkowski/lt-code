@@ -1,21 +1,16 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        map_s, map_t = {}, {}
         
-        if len(s) != len(t):
-            return False
-
-        letters_map = {}
-
-        for a, b in zip(s, t): 
+        for x, y in zip(s, t): 
+            if (
+                (x in map_s and map_s[x] != y) or 
+                (y in map_t and map_t[y] != x)
+            ):
+                return False
             
-            if letters_map.get(a) is None:
-                if b in letters_map.values(): 
-                    return False
-                else:
-                    letters_map[a] = b 
-            elif letters_map[a] == b:
-                pass 
-            else: 
-                return False 
-        
+            map_s[x] = y
+            map_t[y] = x
+
         return True
+
