@@ -3,38 +3,37 @@ class Solution:
         n = len(words[0])
         counts = {}
         res = []
-        l = 0
 
         for w in words: 
-            counts[w] = 1 + counts.get(w, 0)
-
-
-        for i in range(n):
-            start = i
-            window = {}
-            have = 0
+            counts[w] = counts.get(w, 0) + 1 
         
-            for l in range(i, len(s) - n + 1, n):    
-                sub = s[l:l+n]
+        for i in range(n): 
+            start = i
+            window = {} 
+            have = 0 
 
-                if sub in counts: 
-                    have += 1 
-                    window[sub] = 1 + window.get(sub, 0)
+            for l in range(i, len(s) - n + 1, n): 
 
-                    while window[sub] > counts[sub]:
-                        window[s[start:start + n]] -= 1
-                        start += n
-                        have -= 1
+                word = s[l:l+n]
+                window[word] = 1 + window.get(word, 0)
+
+                if word in counts: 
+                    have += 1
                     
+                    while window[word] > counts[word]:
+                        first_left_str = s[start:start + n]
+                        window[first_left_str] -= 1 
+                        start += n 
+                        have -= 1 
+
                     if have == len(words):
                         res.append(start)
+                        
 
-                else:
-                    start = l + n
+                else: 
                     window = {}
+                    start = l + n
                     have = 0
-
+        
         return res
-                
-                    
-                
+
