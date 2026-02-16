@@ -5,8 +5,8 @@ class Solution:
         for r in range(len(nums)): 
             total += nums[r]
             while total >= target: 
-                res = min(res, r - l + 1)
+                res = min(r - l + 1, res)
                 total -= nums[l]
-                l += 1
+                l += 1 
         
-        return 0 if res == float('inf') else res 
+        return 0 if res == float('inf') else res
