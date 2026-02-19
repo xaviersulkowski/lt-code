@@ -6,27 +6,24 @@ class Solution:
         n = len(matrix)
         l, r = 0, n - 1
 
-        # until square is 1D
         while l < r: 
+            t, b = l, r 
+
             for i in range(r - l): 
-                # init position
-                top, bottom = l, r 
+                
+                top_left = matrix[t][l + i]
 
-                # save top left
-                tmp = matrix[top][l + i]
+                # replace top left with bottom left
+                matrix[t][l + i] = matrix[b - i][l]
 
-                # move bottom left into top left 
-                matrix[top][l + i] = matrix[bottom - i][l]
+                # replace bottom left with bottom right
+                matrix[b - i][l] = matrix[b][r - i]
 
-                # move bottom right into bottom left
-                matrix[bottom - i][l] = matrix[bottom][r - i]
+                # replace bottom right with top right
+                matrix[b][r - i] = matrix[t + i][r]
 
-                # move top right into bottom right
-                matrix[bottom][r - i] = matrix[top + i][r]
-
-                # move top left(tmp) into top right
-                matrix[top + i][r] = tmp 
+                # replace top right with bottom left
+                matrix[t + i][r] = top_left
 
             l += 1 
             r -= 1
-
