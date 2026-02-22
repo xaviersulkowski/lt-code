@@ -26,4 +26,3 @@ class Solution:
                         l += 1 
 
         return res
-
