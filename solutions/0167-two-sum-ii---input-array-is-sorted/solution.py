@@ -3,13 +3,14 @@ class Solution:
         l, r = 0, len(numbers) - 1
 
         while l < r: 
-            tmp_sum = numbers[l] + numbers[r] 
-            if tmp_sum == target: 
+            val_l = numbers[l]
+            val_r = numbers[r]
+
+            if val_l + val_r == target: 
                 return [l + 1, r + 1]
             
-            if tmp_sum > target: 
+            if val_l + val_r > target: 
                 r -= 1 
             
-            if tmp_sum < target: 
+            if val_l + val_r < target: 
                 l += 1 
-
