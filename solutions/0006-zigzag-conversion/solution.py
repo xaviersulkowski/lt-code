@@ -29,4 +29,3 @@ class Solution:
             row = row + 1 if go_down else row - 1
         
         return "".join(res)
-
