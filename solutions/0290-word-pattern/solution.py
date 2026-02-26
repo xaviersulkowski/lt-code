@@ -1,16 +1,19 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        if len(s.split()) != len(pattern):
+
+        map_pattern = {}
+        map_s = {}
+
+        s = s.split()
+
+        if len(s) != len(pattern): 
             return False
 
-        words = {}
-        patterns = {}
-        
-        for word, letter in zip(s.split(), pattern): 
-            if words.get(letter) is None and patterns.get(word) is None: 
-                words[letter] = word
-                patterns[word] = letter 
-            elif words.get(letter) != word and patterns.get(word) != letter:
-                return False
+        for p, c in zip(pattern, s): 
+            if (p in map_pattern and map_pattern[p] != c) or ((c in map_s and map_s[c] != p)): 
+                return False 
+            
+            map_pattern[p] = c
+            map_s[c] = p
 
         return True
