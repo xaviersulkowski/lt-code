@@ -18,5 +18,3 @@ class Solution:
             groups[tuple(counts)].append(s)
         
         return list(groups.values())
-
-
