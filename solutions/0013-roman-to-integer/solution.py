@@ -1,8 +1,9 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        roman_integer = {
+
+        romanMap = {
             "I": 1,
-            "V": 5,
+            "V": 5, 
             "X": 10,
             "L": 50,
             "C": 100,
@@ -10,14 +11,22 @@ class Solution:
             "M": 1000
         }
 
-        res = 0
-        for i in range(len(s) - 1): 
-            if roman_integer[s[i]] < roman_integer[s[i + 1]]:
-                res -= roman_integer[s[i]]
+        result = 0 
+
+        for i in range(0, len(s) - 1, 1): 
+            c1 = romanMap[s[i]]
+            c2 = romanMap[s[i+1]]
+
+            if c2 > c1: 
+                result -= c1
             else: 
-                res += roman_integer[s[i]]
+                result += c1 
+
+        result += romanMap[s[-1]]
+
+        return result
+
+            
+
+
         
-        res += roman_integer[s[-1]]
-
-        return res
-
