@@ -1,16 +1,10 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        l, r = 0, len(numbers) - 1
-
-        while l < r: 
-            val_l = numbers[l]
-            val_r = numbers[r]
-
-            if val_l + val_r == target: 
-                return [l + 1, r + 1]
-            
-            if val_l + val_r > target: 
-                r -= 1 
-            
-            if val_l + val_r < target: 
-                l += 1 
+        seen = {}
+        for i in range(len(numbers)): 
+            diff = target - numbers[i]
+            if diff in seen: 
+                return [seen[diff] + 1, i + 1]
+            seen[numbers[i]] = i
+        return False
+        
