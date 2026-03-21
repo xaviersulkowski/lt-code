@@ -20,6 +20,7 @@ class Solution:
 
         output = [1] * len(nums)
         prefix = 1 
+
         for i in range(len(nums)): 
             output[i] *= prefix 
             prefix *= nums[i]
@@ -30,3 +31,6 @@ class Solution:
             postfix *= nums[i]
 
         return output
+
+            
+
