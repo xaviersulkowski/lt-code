@@ -17,15 +17,17 @@ class Solution:
 
         # approach 2: 
 
-        res = [""] * numRows 
-        row = 0 
-        go_down = False
-        for ch in s: 
-            res[row] += ch 
-            
+        res = [""] * numRows
+        row = 0
+        goingDown = False 
+
+        for c in s: 
             if row == 0 or row == numRows - 1: 
-                go_down = not go_down
+                goingDown = not goingDown
             
-            row = row + 1 if go_down else row - 1
+            res[row] += c
+
+            row = row + 1 if goingDown else row - 1
+        
         
         return "".join(res)
