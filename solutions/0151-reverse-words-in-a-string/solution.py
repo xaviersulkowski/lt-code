@@ -2,7 +2,7 @@ class Solution:
     def reverseWords(self, s: str) -> str:
         res = []
         i = len(s) - 1 
-        
+
         while i >= 0: 
             if s[i] != " ":
                 j = i 
@@ -11,7 +11,8 @@ class Solution:
                 
                 res.append(s[j+1:i+1])
                 i = j
-            i -= 1
-
+            
+            i -= 1 
+        
         return " ".join(res)
 
