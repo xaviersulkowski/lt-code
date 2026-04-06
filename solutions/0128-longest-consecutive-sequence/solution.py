@@ -5,14 +5,14 @@ class Solution:
         
         for n in nums: 
             if n - 1 not in nums: 
-                l = 1 
-                while n + l in nums: 
-                    l += 1 
+                i = 0
+                while n + i in nums: 
+                    i += 1 
                 
-                longest = max(longest, l)
-            
-        return longest 
-            
+                longest = max(longest, i)
+        
+        return longest
+
 
 
         
