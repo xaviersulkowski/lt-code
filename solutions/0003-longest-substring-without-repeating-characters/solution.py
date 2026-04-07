@@ -3,14 +3,14 @@ class Solution:
         l = 0 
         r = 0 
         window = set()
-        res = 0 
+        longest = 0 
 
         while r < len(s): 
             while s[r] in window: 
-                window.remove(s[l])
-                l += 1 
+                    window.remove(s[l])
+                    l += 1 
             window.add(s[r])
-            res = max(len(window), res)
-            r += 1 
+            r += 1                
+            longest = max(longest, len(window))
 
-        return res 
+        return longest
